@@ -1,0 +1,135 @@
+/* --- style.css (KOSONGKAN FAIL ASAL & TAMPAL KOD PENUH INI) --- */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff0f3; /* Warna latar belakang pink cair */
+    color: #555;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background: white;
+    width: 90%;
+    /* Saya besarkan sikit max-width supaya galeri nampak lebih 'centered' dan tak cramped */
+    max-width: 420px; 
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Bayang-bayang lembut */
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    margin: 20px 0;
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+h1 { 
+    color: #ff4d6d; /* Warna tajuk pink terang */
+    font-size: 1.6rem; 
+    margin-bottom: 5px; 
+}
+
+p { 
+    font-size: 0.95rem; 
+    line-height: 1.6; 
+}
+
+/* --- Gaya Borang (Untuk halaman akhir.html) --- */
+form { 
+    text-align: left; 
+    margin-top: 20px; 
+}
+
+label { 
+    font-size: 0.85rem; 
+    font-weight: bold; 
+    color: #ff4d6d; 
+    display: block; /* Pastikan label duduk atas input */
+    margin-bottom: 5px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ffccd5;
+    border-radius: 8px;
+    box-sizing: border-box; /* Elak kotak terkeluar dari skrin phone */
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #ff4d6d; /* Tukar warna bila tengah menaip */
+}
+
+/* --- Gaya Butang (Untuk pergi ke next page & hantar borang) --- */
+.btn {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efek smooth bila hover */
+    text-decoration: none; /* Buang garisan bawah pada link <a> */
+    display: block; /* Jadikan link penuh satu kotak */
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.btn:hover { 
+    background: #c9184a; /* Warna gelap sikit bila mouse lalu */
+}
+
+/* --- GAYA BARU UNTUK GALERI GAMBAR (Untuk sejarah.html / page2) --- */
+.gallery {
+    display: grid;
+    /* Flexible grid: min 150px, auto-fit ke baris, regang untuk penuhkan */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 15px; /* Jarak antara gambar */
+    margin: 25px 0;
+    /* PENTING! Kod ini akan paksa row gambar untuk sentiasa berada di tengah-tengah card */
+    justify-content: center; 
+}
+
+.gallery img {
+    /* Saya setkan satu tinggi square yang tetap supaya nampak kemas dan seragam */
+    width: 100%; /* Penuhkan width grid cell */
+    height: 150px; 
+    object-fit: cover; /* Centered crop (potong tengah) */
+    object-position: center; /* Absolute center of crop */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+/* --- Animasi Hati Jatuh (Dipanggil oleh JavaScript) --- */
+.heart {
+    position: fixed;
+    top: -20px;
+    user-select: none;
+    z-index: 1; /* Pastikan hati jatuh kat belakang kotak putih (card) */
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to { 
+        transform: translateY(110vh); /* Jatuh sampai melepasi skrin bawah */
+    }
+}

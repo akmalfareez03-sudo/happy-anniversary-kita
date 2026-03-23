@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Baby Sayaaaaa...</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Skrin kekunci (Lock Screen) */
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #fff0f3; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+        }
+        
+        /* Sorokkan content utama mula-mula */
+        #main-content { display: none; }
+        
+        /* Class untuk page yang disorok */
+        .page-section { display: none; }
+        
+        /* Tunjukkan page pertama sahaja bila website dibuka */
+        #page1 { display: block; }
+
+        /* --- GAYA UNTUK POP-UP AKHIR --- */
+        #success-popup {
+            display: none; /* Sorok mula-mula */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 240, 243, 0.95); /* Pink cair lutsinar */
+            z-index: 10000; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 20px; box-sizing: border-box;
+        }
+        
+        .pulse-heart {
+            font-size: 80px;
+            animation: pulse 1s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="Promise.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="lock-screen">
+        <h2 style="color: #ff4d6d; margin-bottom: 20px;">Ada suprise untuk awak... 🫣</h2>
+        <button onclick="bukaWebsite()" class="btn" style="width: 80%; max-width: 300px; padding: 15px;">
+             Tekan Sini Untuk Buka 
+        </button>
+    </div>
+
+    <div id="success-popup">
+        <div class="pulse-heart">❤️</div>
+        <h1 style="color: #ff4d6d; font-size: 2.5rem; margin-bottom: 10px;">Thank you sayang!</h1>
+        <h2 style="color: #ff4d6d; font-size: 1.8rem; margin-top: 0;">I love youuu 😘</h2>
+    </div>
+
+    <div id="main-content">
+        
+        <div id="page1" class="page-section card" style="margin: 20px auto;">
+            <h1>Hai Babyyyy... 👋</h1>
+            <p>Ada benda yang saya nak tunjuk kat awak. Kejappp je tauu</p>
+            <img src="gambar1.jpg" alt="Kita">
+            <br><br>
+            <button onclick="tukarPage('page2')" class="btn">Klik Sini Untuk Start</button>
+        </div>   
+
+        <div id="page2" class="page-section card" style="margin: 20px auto;">
+            <h1>Our Story</h1>
+            
+            <div class="gallery">
+                <img src="gambar2.jpg" alt="Kenangan 1"style="object-position: 25% 70%;">
+                <img src="gambar3.jpg" alt="Kenangan 2"style="object-position: 25% 60%;">
+                <img src="gambar4.jpg" alt="Kenangan 3">
+                <img src="gambar5.jpg" alt="Kenangan 4">
+            </div>
+            
+            <div style="text-align: left; margin: 20px 0; font-size: 0.9rem;">
+                <p><b>First time duduk berdua:</b><br>
+                Masa ni sombong lagi, tapi dalam hati saya kata, "Saya nak jaga dia ni sampai bila bila."</p>
+                <p><b>Kenangan Paling Manis:</b><br>
+                Bila kita spend time sama-sama. Masa tu saya rasa dunia ni kita yang punya.</p>
+                <p><b>Janji Saya:</b><br>
+                Saya akan sentiasa cuba jadi yang terbaik untuk awak.</p>
+            </div>
+            <hr style="border: 0.5px solid #ffe5ec; margin-bottom: 20px;">
+            <button onclick="tukarPage('page3')" class="btn">Satu Lagi Benda... (Klik!)</button>
+        </div>
+
+        <div id="page3" class="page-section card" style="margin: 20px auto;">
+            <h1>Happy Anniversary! ❤️</h1>
+            <p>Terima kasih sebab sentiasa ada dengan saya. I love you!</p>
+            
+            <form id="my-form" action="https://formspree.io/f/mnjgkrrd" method="POST">
+                <label>Kenangan paling awak suka pasal kita?</label>
+                <textarea name="kenangan" rows="3" placeholder="Cerita sikit kat sini..." required></textarea>
+
+                <label>Sudi tak dinner dengan saya malam ni?</label>
+                <select name="dinner_date">
+                    <option value="Sudi Sangat">Sudi sangat! 😍</option>
+                    <option value="Mesti Lah">Mesti lah sayang! ❤️</option>
+                </select>
+
+                <label>Kalau sudi, nak makan kat mana?</label>
+                <input type="text" name="lokasi_dinner" placeholder="Contoh: Sumpah tak kisah. Saya okey je mana mana" required>
+
+                <button type="submit" id="submit-btn" class="btn">Hantar Jawapan ❤️</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        // Fungsi untuk mula-mula buka website
+        function bukaWebsite() {
+            document.getElementById('bg-music').play();
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        // Fungsi untuk tukar-tukar page tanpa matikan lagu
+        function tukarPage(idPage) {
+            // Sorokkan semua page dulu
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'none';
+            
+            // Tunjukkan page yang dia nak pergi je
+            document.getElementById(idPage).style.display = 'block';
+            
+            // Auto scroll ke atas skrin
+            window.scrollTo(0, 0);
+        }
+
+        // --- SKRIP MAGIK UNTUK HANTAR BORANG & KELUARKAN POP-UP ---
+        const form = document.getElementById("my-form");
+        const submitBtn = document.getElementById("submit-btn");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); // Halang form dari buka page baru
+            
+            submitBtn.innerHTML = "Tunggu kejap babyyy... ⏳"; // Tukar tulisan butang
+            submitBtn.disabled = true; // Kunci butang elak spam
+            
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    // Kalau berjaya hantar, tunjuk Pop-up!
+                    document.getElementById("success-popup").style.display = "flex";
+                    form.reset(); // Kosongkan borang
+                } else {
+                    alert("Alamak, ada masalah sikit. Cuba tekan hantar lagi sekali baby.");
+                    submitBtn.innerHTML = "Hantar Jawapan ❤️";
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert("Alamak, internet lambat sikit rasanya. Cuba lagi.");
+                submitBtn.innerHTML = "Hantar Jawapan ❤️";
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Animasi Hati Jatuh
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
